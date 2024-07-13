@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const Job = require('./models/job'); // Import the Job model
+const Job = require('./models/Job'); // Import the Job model
 
 // Create Express app
 const app = express();
