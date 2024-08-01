@@ -59,8 +59,15 @@ app.put('/api/jobs/:id', async (req, res) => {
 });
 
 app.get('/api/jobs', async (req, res) => {
+  const { _limit, _page } = req.query;
+  const limit = parseInt(_limit) || 10;
+  const page = parseInt(_page) || 1;
+
   try {
-    const jobs = await Job.find();
+    const jobs = await Job.find()
+      .limit(limit)
+      .skip((page - 1) * limit);
+
     res.status(200).json(jobs);
   } catch (error) {
     console.error('Error fetching jobs:', error.message || error);
