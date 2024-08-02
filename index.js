@@ -1,4 +1,4 @@
-('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,6 +9,7 @@ const Job = require('./models/Job'); // Import the Job model
 
 // Create Express app
 const app = express();
+
 app.use(bodyParser.json());
 app.use(cors({
   origin: ["https://frontendjoblistingwebstite.onrender.com", "https://backendjoblistingwebsite.onrender.com"],
