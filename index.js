@@ -1,4 +1,4 @@
-require('dotenv').config();
+('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -59,15 +59,8 @@ app.put('/api/jobs/:id', async (req, res) => {
 });
 
 app.get('/api/jobs', async (req, res) => {
-  const { _limit, _page } = req.query;
-  const limit = parseInt(_limit) || 10;
-  const page = parseInt(_page) || 1;
-
   try {
-    const jobs = await Job.find()
-      .limit(limit)
-      .skip((page - 1) * limit);
-
+    const jobs = await Job.find();
     res.status(200).json(jobs);
   } catch (error) {
     console.error('Error fetching jobs:', error.message || error);
@@ -99,7 +92,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(process.env.PORT || 8000, () => { // Use PORT environment variable or default to 8000
-      console.log(`Server is running on port ${process.env.PORT || 8000}`);
+      console.log(Server is running on port ${process.env.PORT || 8000});
     });
   })
   .catch((error) => {
