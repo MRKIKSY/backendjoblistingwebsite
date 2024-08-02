@@ -19,7 +19,18 @@ app.use(cors({
 app.use(helmet());
 app.use(morgan('combined'));
 
-// Routes and other middleware...
+// Define routes
+app.get('/api/jobs', async (req, res) => {
+  try {
+    const jobs = await Job.find(); // Adjust query if needed for pagination
+    res.status(200).json(jobs);
+  } catch (error) {
+    console.error('Error fetching jobs:', error.message || error);
+    res.status(500).json({ error: error.message || 'Error fetching jobs' });
+  }
+});
+
+// Add other routes as needed...
 
 // Connect to MongoDB
 console.log('MongoDB URI:', process.env.MONGODB_URL); // Log MongoDB URI
